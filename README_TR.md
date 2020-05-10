@@ -49,9 +49,6 @@ class User extends Authenticatable
 
 #### UserFavorites kullanımı
 ```php
-/**
- * UserFavorites
- */
 $user = User::find(1);
 
 $user->favorites(); // bir kullanıcının tüm favori kayıtlarını object olarak alır
