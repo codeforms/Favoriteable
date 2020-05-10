@@ -41,11 +41,11 @@ trait Favoriteable
 	}
 
 	/**
-	 * @example $post->removeFavorite()
+	 * @example $post->unFavorite()
 	 * 
 	 * @return mixed
 	 */
-	public function removeFavorite(): bool
+	public function unFavorite(): bool
 	{
 		if(self::hasFavorite())
 			return $this->favorites()->where('user_id', auth()->user()->id)->delete();
