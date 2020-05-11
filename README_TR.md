@@ -30,6 +30,7 @@ $post->hasFavorite(); // $post'un, mevcut kullanıcı için (auth()->user()) fav
 $post->addFavorite(); // $post'u, mevcut kullanıcı için (auth()->user()) 'favori' olarak kaydeder
 $post->unFavorite(); // $post'un, mevcut kullanıcıya ait (auth()->user()) 'favori' kaydını siler
 $post->deleteFavorites(); // $post'a ait tüm favori kayıtlarını siler
+$post->favorites()->count(); // $post'u favori olarak kaydeden toplam kullanıcı/kayıt sayısı
 ``` 
 ---
 * (Tercihen) UserFavorites trait dosyasını ```User``` model'a ekleyin;
