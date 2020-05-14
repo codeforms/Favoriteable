@@ -10,6 +10,7 @@ Bir model kaynağını, favorilere ekleme veya hatırlamak için kaydetme gibi f
 ``` php artisan migrate```
 * Favoriteable trait dosyasını, kullanmak istediğiniz model dosyalarına ekleyiniz;
 ```php
+<?php
 namespace App\Post;
 
 use CodeForms\Repositories\Favorite\Favoriteable;
@@ -24,6 +25,7 @@ class Post extends Model
 ```
 ## Kullanım
 ```php
+<?php
 $post = Post::find(1);
 
 $post->hasFavorite(); // $post'un, mevcut kullanıcı için (auth()->user()) favori kaydını sorgular
@@ -36,6 +38,7 @@ $post->favorites()->count(); // $post'u favori olarak kaydeden toplam kullanıc�
 * (Tercihen) UserFavorites trait dosyasını ```User``` model'a ekleyin;
 UserFavorites trait dosyası, kullanıcıların favori olarak kaydettiği kayıtları object olarak almayı sağlar.
 ```php
+<?php
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -50,6 +53,7 @@ class User extends Authenticatable
 
 #### UserFavorites kullanımı
 ```php
+<?php
 $user = User::find(1);
 
 $user->favorites(); // bir kullanıcının tüm favori kayıtlarını object olarak alır
