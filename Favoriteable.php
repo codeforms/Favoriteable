@@ -25,7 +25,7 @@ trait Favoriteable
 	 */
 	public function hasFavorite(): bool
 	{
-		return (bool)$this->favorites()->where('user_id', auth()->user()->id)->first();
+		return (bool)$this->favorites()->where('user_id', auth()->user()->id)->count();
 	}
 
 	/**
@@ -35,7 +35,7 @@ trait Favoriteable
 	 */
 	public function addFavorite()
 	{
-		if(!self::hasFavorite())
+		if(!$this->hasFavorite())
 			return $this->favorites()->create();
 		return false;
 	}
@@ -47,9 +47,19 @@ trait Favoriteable
 	 */
 	public function unFavorite(): bool
 	{
-		if(self::hasFavorite())
+		if($this->hasFavorite())
 			return $this->favorites()->where('user_id', auth()->user()->id)->delete();
 		return false;
+	}
+
+	/**
+	 * @example $post->toggleFavorite()
+	 * 
+	 * @return mixed
+	 */
+	public function toggleFavorite()
+	{
+		return $this->hasFavorite() ?  $this->unFavorite() : $this->addFavorite();
 	}
 
 	/**

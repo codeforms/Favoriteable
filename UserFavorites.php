@@ -18,9 +18,9 @@ trait UserFavorites
 	 */
 	public function favorites()
 	{
-		if(self::hasFavorite()) {
+		if($this->hasFavorite()) {
 			$collection = new Collection;
-			foreach($this->userFavorites()->get() as $favorite)
+			foreach($this->userFavorites as $favorite)
 				$collection->push(app($favorite->favoriteable_type)->find($favorite->favoriteable_id));
 
 			return $collection;
@@ -36,7 +36,7 @@ trait UserFavorites
 	 */
 	public function hasFavorite(): bool
 	{
-		return (bool)$this->userFavorites()->count();
+		return !$this->userFavorites->isEmpty();
 	}
 
 	/**
