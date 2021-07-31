@@ -28,9 +28,10 @@ class Post extends Model
 <?php
 $post = Post::find(1);
 
-$post->hasFavorite(); // $post'un, mevcut kullanıcı için (auth()->user()) favori kaydını sorgular
-$post->addFavorite(); // $post'u, mevcut kullanıcı için (auth()->user()) 'favori' olarak kaydeder
-$post->unFavorite(); // $post'un, mevcut kullanıcıya ait (auth()->user()) 'favori' kaydını siler
+$post->hasFavorite(); // ilgili $post için mevcut kullanıcının (auth()->user()) favori kaydını sorgular
+$post->addFavorite(); // ilgili $post'u mevcut kullanıcı için 'favori' olarak kaydeder
+$post->unFavorite(); // ilgili $post'un mevcut kullanıcıya ait 'favori' kaydını siler
+$post->toggleFavorite(); // ilgili $post için kullanıcının 'favori' kaydı varsa siler, yoksa yeni bir kayıt oluşturur
 $post->deleteFavorites(); // $post'a ait tüm favori kayıtlarını siler
 $post->favorites()->count(); // $post'u favori olarak kaydeden toplam kullanıcı/kayıt sayısı
 ``` 
